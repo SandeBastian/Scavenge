@@ -16,3 +16,37 @@ La suma de los dígitos de posiciones pares : 7
 Resultado de concatenación: 61435
 Nota: No puede emplear arreglos, ni cadenas.
 */
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+    int n, aux, r, posImp=0 ,posPar=0, contImp=0, contPar=0, sumaImp=0, sumaPar=0, conCat=0;
+    do {
+        cout<<"Ingrese un numero positivo: ";
+        cin>>n;
+    }while (n<=10000||n>=99999);
+    aux=n;
+    int cont=1;
+    while (aux>0) {
+        r=aux%10;
+        aux=aux/10;
+        if (cont%2!=0) {
+            posImp=r*(int)pow(10,contImp)+posImp;
+            contImp++; //Termina contando todos las veces que encuentra una cifra de pos Impar
+            cont++;
+            sumaImp=sumaImp+r;
+        }else {
+            posPar=r*(int)pow(10,contPar)+posPar;
+            contPar++; //Termina contando todos las veces que encuentra una cifra de pos Par
+            cont++;
+            sumaPar=sumaPar+r;
+        }
+    }
+    cout<<"Suma de digitos de posiciones Impares: "<<sumaImp<<endl;
+    cout<<"Suma de digitos de posiciones Pares: "<<sumaPar<<endl;
+    cout<<contImp<<endl;
+    cout<<contPar<<endl;
+    conCat=posPar*(int)pow(10,contImp)+posImp; //Como pide primero par dejo espacio con 0 para los impares y eso con el contador de impares
+    cout<<"El resultado de concatenada es: "<<conCat<<endl;
+    return 0;
+}
